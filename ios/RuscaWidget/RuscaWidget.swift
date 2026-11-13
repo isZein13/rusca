@@ -5,7 +5,7 @@ private let appGroupId = "group.com.rusca.app"
 private let accent = Color(red: 0.110, green: 0.098, blue: 0.086)
 private let ink = Color(red: 0.110, green: 0.098, blue: 0.086)
 private let muted = Color(red: 0.435, green: 0.404, blue: 0.361)
-private let background = Color(red: 1.0, green: 0.988, blue: 0.973)
+private let paper = Color(red: 1.0, green: 0.988, blue: 0.973)
 
 struct WordEntry: TimelineEntry {
     let date: Date
@@ -50,7 +50,7 @@ struct RuscaWidgetEntryView: View {
         if #available(iOS 17.0, *) {
             content.containerBackground(for: .widget) {
                 if family == .systemSmall || family == .systemMedium {
-                    background
+                    paper
                 } else {
                     Color.clear
                 }
