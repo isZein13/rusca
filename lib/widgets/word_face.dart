@@ -81,21 +81,51 @@ class WordFace extends StatelessWidget {
           ),
         ],
         const SizedBox(height: 14),
-        TextButton.icon(
-          onPressed: () => state.tts.speakRussian(word.ru),
-          style: TextButton.styleFrom(
-            foregroundColor: RuscaColors.ink,
-            backgroundColor: RuscaColors.paper,
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(999),
-              side: const BorderSide(color: RuscaColors.line),
+        _ListenButton(onPressed: () => state.tts.speakRussian(word.ru)),
+      ],
+    );
+  }
+}
+
+class _ListenButton extends StatelessWidget {
+  const _ListenButton({required this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onHorizontalDragStart: (_) {},
+      onHorizontalDragUpdate: (_) {},
+      onHorizontalDragEnd: (_) {},
+      child: Material(
+        color: RuscaColors.paper,
+        shape: const StadiumBorder(
+          side: BorderSide(color: RuscaColors.line),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: const StadiumBorder(),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.volume_up_rounded, size: 18, color: RuscaColors.ink),
+                SizedBox(width: 8),
+                Text(
+                  L10n.listen,
+                  style: TextStyle(
+                    color: RuscaColors.ink,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
           ),
-          icon: const Icon(Icons.volume_up_rounded, size: 18),
-          label: const Text(L10n.listen),
         ),
-      ],
+      ),
     );
   }
 }

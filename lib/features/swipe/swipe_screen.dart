@@ -114,8 +114,9 @@ class _SwipeScreenState extends State<SwipeScreen> {
                       style: OutlinedButton.styleFrom(
                         foregroundColor: RuscaColors.no,
                         side: const BorderSide(color: RuscaColors.no),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                       ),
-                      child: const Text(L10n.swipeLeft),
+                      child: const _OneLineLabel(L10n.swipeLeft),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -125,8 +126,9 @@ class _SwipeScreenState extends State<SwipeScreen> {
                       style: FilledButton.styleFrom(
                         backgroundColor: RuscaColors.ok,
                         foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                       ),
-                      child: const Text(L10n.swipeRight),
+                      child: const _OneLineLabel(L10n.swipeRight),
                     ),
                   ),
                 ],
@@ -153,6 +155,20 @@ class _SwipeScreenState extends State<SwipeScreen> {
     } else {
       await state.markToLearn(word);
     }
+  }
+}
+
+class _OneLineLabel extends StatelessWidget {
+  const _OneLineLabel(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Text(text, maxLines: 1, softWrap: false),
+    );
   }
 }
 

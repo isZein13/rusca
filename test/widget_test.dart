@@ -10,9 +10,19 @@ void main() {
 
   testWidgets('home, swipe and practice tabs render', (tester) async {
     SharedPreferences.setMockInitialValues({});
+    final ttsCalls = <String>[];
     tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
       const MethodChannel('home_widget'),
       (call) async => null,
+    );
+    tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+      const MethodChannel('flutter_tts'),
+      (call) async {
+        ttsCalls.add(call.method);
+        if (call.method == 'getVoices') return <Map<String, String>>[];
+        if (call.method == 'isLanguageAvailable') return true;
+        return 1;
+      },
     );
     final state = AppState();
     await state.load();
@@ -33,6 +43,12 @@ void main() {
     await tester.pump(const Duration(milliseconds: 400));
     expect(find.text('Biliyorum'), findsOneWidget);
     expect(find.text('Öğreneceğim'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+
+    await tester.tap(find.text('Dinle').hitTestable().last);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 50));
+    expect(ttsCalls, contains('speak'));
 
     await tester.tap(find.text('Pratik'));
     await tester.pump(const Duration(milliseconds: 400));
