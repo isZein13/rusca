@@ -4,7 +4,7 @@ import '../models/word_item.dart';
 
 const androidWidgetName = 'WordOfDayWidgetProvider';
 const iosWidgetName = 'RuscaWidget';
-const androidQualifiedName = 'com.rusca.app.WordOfDayWidgetProvider';
+const androidQualifiedName = 'com.rusca.rusca.WordOfDayWidgetProvider';
 const iosAppGroup = 'group.com.rusca.app';
 
 Future<void> syncWordOfDayWidget(WordItem word) async {

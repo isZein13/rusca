@@ -15,9 +15,9 @@ class ProgressSnapshot {
 
   final Map<String, WordStatus> statuses;
   final Map<String, int> correctCounts;
-  final int xp;
-  final int streak;
-  final String lastPracticeDay;
+  int xp;
+  int streak;
+  String lastPracticeDay;
 
   WordStatus statusOf(String id) => statuses[id] ?? WordStatus.neu;
 }

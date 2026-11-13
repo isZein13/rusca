@@ -14,6 +14,7 @@ class ListsScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: SafeArea(
+        bottom: false,
         child: Column(
           children: [
             const Padding(
@@ -22,14 +23,16 @@ class ListsScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   L10n.words,
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
+                  style: RuscaType.page,
                 ),
               ),
             ),
             const TabBar(
-              indicatorColor: RuscaColors.accent,
-              labelColor: RuscaColors.accent,
+              indicatorColor: RuscaColors.ink,
+              indicatorSize: TabBarIndicatorSize.label,
+              labelColor: RuscaColors.ink,
               unselectedLabelColor: RuscaColors.muted,
+              dividerColor: RuscaColors.line,
               tabs: [
                 Tab(text: L10n.toLearn),
                 Tab(text: L10n.learned),
@@ -91,9 +94,24 @@ class _WordList extends StatelessWidget {
         final word = words[index];
         return ListTile(
           tileColor: RuscaColors.card,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          title: Text(word.trPron, style: const TextStyle(color: RuscaColors.accent)),
-          subtitle: Text('${word.ru} · ${word.tr}'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+            side: const BorderSide(color: RuscaColors.line),
+          ),
+          title: Text(
+            word.trPron,
+            style: const TextStyle(
+              color: RuscaColors.ink,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          isThreeLine: word.tip.isNotEmpty,
+          subtitle: Text(
+            word.tip.isEmpty
+                ? '${word.ru}  ·  ${word.tr}'
+                : '${word.ru}  ·  ${word.tr}\n${word.tip}',
+            style: const TextStyle(color: RuscaColors.muted),
+          ),
           trailing: IconButton(
             icon: const Icon(Icons.volume_up_rounded),
             onPressed: () => onHeard(word),

@@ -5,6 +5,7 @@ class WordItem {
     required this.tr,
     required this.trPron,
     required this.category,
+    this.tip = '',
   });
 
   final String id;
@@ -12,6 +13,7 @@ class WordItem {
   final String tr;
   final String trPron;
   final String category;
+  final String tip;
 
   factory WordItem.fromJson(Map<String, dynamic> json) {
     return WordItem(
@@ -20,8 +22,18 @@ class WordItem {
       tr: json['tr'] as String,
       trPron: json['trPron'] as String,
       category: json['category'] as String,
+      tip: json['tip'] as String? ?? '',
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'ru': ru,
+        'tr': tr,
+        'trPron': trPron,
+        'category': category,
+        'tip': tip,
+      };
 }
 
 enum WordStatus { neu, toLearn, learned }
