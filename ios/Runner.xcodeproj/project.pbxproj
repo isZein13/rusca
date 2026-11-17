@@ -259,6 +259,7 @@
 					};
 					A100000B2ED2DC5600515811 = {
 						CreatedOnToolsVersion = 15.0;
+						DevelopmentTeam = 7J3Z73TNF3;
 					};
 				};
 			};
@@ -697,6 +698,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = RuscaWidget/RuscaWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J3Z73TNF3;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = RuscaWidget/Info.plist;
@@ -730,6 +732,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = RuscaWidget/RuscaWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J3Z73TNF3;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = RuscaWidget/Info.plist;
@@ -761,6 +764,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = RuscaWidget/RuscaWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J3Z73TNF3;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = RuscaWidget/Info.plist;
